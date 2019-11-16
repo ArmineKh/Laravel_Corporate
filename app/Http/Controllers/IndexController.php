@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\PortfoliosRepository;
 use Illuminate\Http\Request;
 use App\Repositories\SlidersRepository;
+
 use Config;
 
 class IndexController extends SiteController
 {
 
-    public function __construct(SlidersRepository $s_rep){
+    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep){
             parent::__construct(new \App\Repositories\MenusRepository(new \App\Menu));
             $this->s_rep = $s_rep;
+            $this->p_rep = $p_rep;
             $this->bar = 'right';
             $this->template = env('THEME').'.index';
         }
@@ -24,10 +27,21 @@ class IndexController extends SiteController
     public function index()
     {
         //
+        $portfolios = $this->getPortfolio();
+        $content = view(env('THEME').'.content')->with('portfolios', $portfolios)->render();
+        $this->vars['content'] = $content;
+//        dd($portfolio);
         $sliderItems = $this->getSliders();
-        $sliders = view(env('THEME').'.slider')->with('sliders', $sliderItems)->render();
+//        dd($sliderItems);
+        $sliders = view('pink.slider')->with('sliders', $sliderItems)->render();
         $this->vars['sliders'] = $sliders;
         return $this->renderOutput();
+    }
+
+    protected function getPortfolio(){
+        $portfolio = $this->p_rep->get('*', Config::get('settings.home_port_count'));
+
+        return $portfolio;
     }
 
     public function getSliders(){
@@ -40,7 +54,7 @@ class IndexController extends SiteController
             $item->img = Config::get('settings.slider_path').'/'.$item->img;
             return $item;
         });
-        // dd($sliders);
+//         dd($sliders);
         return $sliders;
     }
 

@@ -1,63 +1,75 @@
 @if(count($sliders) > 0)
 
-
 <div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px;">
-				    <ul class="slider">
+    <ul class="slider">
+        @set($i,1)
+        @foreach($sliders as $slider)
+            <li>
+                <div class="slide-holder" style="background:  url('{{asset(env('THEME'))}}/images/{{$slider->img}}') no-repeat center center" style="height:483px;">
+                    <div class="slide-content-holder inner" style="height:483px;">
+                        @if($i % 2 == 0)
+                            <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
+                        @else
+                                    <div class="slide-content-holder-content" style="position: absolute; top:80px;right:500px;">
+                        @endif
+                                        <div class="slide-title">
+                                            {!! $slider->title !!}
+                                        </div>
+                                        <div class="slide-content" style="color:#fff">
+                                           <p> {!! $slider->desc !!} </p>
+                                        </div>
+                            </div>
+                    </div>
+                </div>
+            </li>
+        @set($i, $i+1)
+        @endforeach
 
-						@foreach()
-						<li>
-							<div class="slide-holder" style="background:  url('{{asset(env('THEME'))}}/images/{{$slider->img}}') no-repeat center center" style="height:483px;">
+{{--				        <li>--}}
+{{--				            <div class="slide-holder" style="background:  url('images/slider-cycle/xx.jpg') no-repeat center center" style="height:483px;">--}}
+{{--				                <div class="slide-content-holder inner" style="height:483px;">--}}
+{{--				                    <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">--}}
+{{--				                        <div class="slide-title">--}}
+{{--				                            <h2 style="color:#fff">CORPORATE, MULTIPURPOSE.. <br /><span>PINK RIO</span></h2>--}}
+{{--				                        </div>--}}
+{{--				                        <div class="slide-content" style="color:#fff">--}}
+{{--				                            <p>Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque</p>--}}
+{{--				                        </div>--}}
+{{--				                    </div>--}}
+{{--				                </div>--}}
+{{--				            </div>--}}
+{{--				        </li>--}}
+{{--				        <li>--}}
+{{--				            <div class="slide-holder" style="background:  url('images/slider-cycle/00314.jpg') no-repeat center center" style="height:483px;">--}}
+{{--				                <div class="slide-content-holder inner" style="height:483px;">--}}
+{{--				                    <div class="slide-content-holder-content" style="position: absolute; top:80px;left:500px;">--}}
+{{--				                        <div class="slide-title">--}}
+{{--				                            <h2 style="color:#fff">PINKRIO. <span>STRONG AND POWERFUL.</span></h2>--}}
+{{--				                        </div>--}}
+{{--				                        <div class="slide-content" style="color:#fff">--}}
+{{--				                            <p>Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque</p>--}}
+{{--				                        </div>--}}
+{{--				                    </div>--}}
+{{--				                </div>--}}
+{{--				            </div>--}}
+{{--				        </li>--}}
+{{--				        <li>--}}
+{{--				            <div class="slide-holder" style="background:  url('images/slider-cycle/dd.jpg') no-repeat center center" style="height:483px;">--}}
+{{--				                <div class="slide-content-holder inner" style="height:483px;">--}}
+{{--				                </div>--}}
+{{--				            </div>--}}
+{{--				        </li>--}}
+    </ul>
 
-							</div>
-						</li>
-
-						@endforeach
-
-				        <li>
-				            <div class="slide-holder" style="background:  url('images/slider-cycle/xx.jpg') no-repeat center center" style="height:483px;">
-				                <div class="slide-content-holder inner" style="height:483px;">
-				                    <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
-				                        <div class="slide-title">
-				                            <h2 style="color:#fff">CORPORATE, MULTIPURPOSE.. <br /><span>PINK RIO</span></h2>
-				                        </div>
-				                        <div class="slide-content" style="color:#fff">
-				                            <p>Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque</p>
-				                        </div>
-				                    </div>
-				                </div>
-				            </div>
-				        </li>
-				        <li>
-				            <div class="slide-holder" style="background:  url('images/slider-cycle/00314.jpg') no-repeat center center" style="height:483px;">
-				                <div class="slide-content-holder inner" style="height:483px;">
-				                    <div class="slide-content-holder-content" style="position: absolute; top:80px;left:500px;">
-				                        <div class="slide-title">
-				                            <h2 style="color:#fff">PINKRIO. <span>STRONG AND POWERFUL.</span></h2>
-				                        </div>
-				                        <div class="slide-content" style="color:#fff">
-				                            <p>Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque</p>
-				                        </div>
-				                    </div>
-				                </div>
-				            </div>
-				        </li>
-				        <li>
-				            <div class="slide-holder" style="background:  url('images/slider-cycle/dd.jpg') no-repeat center center" style="height:483px;">
-				                <div class="slide-content-holder inner" style="height:483px;">
-				                </div>
-				            </div>
-				        </li>
-				    </ul>
-				    
 				    <div id="yit-widget-area" class="group">
 				        <div class="yit-widget-content inner group">
 				            <div class="widget-first yit-widget widget col1_4 one-fourth col widget-icon-text group">
-				                <img class="icon-img" src="images/icons/cloud.jpg" alt="" />		
+				                <img class="icon-img" src="images/icons/cloud.jpg" alt="" />
 				                <h3>Great Design</h3>
 				                <p>A widgetized area: add shorcodes, text, icons and more.</p>
 				            </div>
 				            <div class="yit-widget widget col1_4 one-fourth col widget-last-post group">
-				                <img class="icon-img" src="images/icons/blog1.png" alt="" />        
+				                <img class="icon-img" src="images/icons/blog1.png" alt="" />
 				                <div>
 				                    <h3><a class="text-color" href="#" title="">Blog news</a></h3>
 				                    <p>Section shortcodes &amp; sticky posts! <a href="article.html"> | more ></a></p>
@@ -72,20 +84,20 @@
 				</div>
 				<script type="text/javascript">
 				    jQuery(document).ready(function($){
-				        
+
 				        var     yit_slider_cycle_fx = 'easing',
 				                yit_slider_cycle_speed = 800,
 				                yit_slider_cycle_timeout = 3000,
 				                yit_slider_cycle_directionNav = true,
-				                yit_slider_cycle_directionNavHide = true, 
+				                yit_slider_cycle_directionNavHide = true,
 				                yit_slider_cycle_autoplay = true;
-				                
+
 				        var yit_widget_area_position = function(){
 				            $('#yit-widget-area').css({ top: 33 - $('#yit-widget-area').height() });
 				        };
 				        $(window).resize(yit_widget_area_position);
 				        yit_widget_area_position();
-				        
+
 				        if( $.browser.msie && parseInt($.browser.version.substr(0,1),10) <= '8' ) {
 				            $('#slider-cycle ul.slider').anythingSlider({
 				                 expand              : true,
@@ -97,7 +109,7 @@
 				                 animationTime       : yit_slider_cycle_speed,
 				                 easing              : yit_slider_cycle_fx,
 				                 autoPlay            : yit_slider_cycle_autoplay ? true : false,
-				                 pauseOnHover        : true, 
+				                 pauseOnHover        : true,
 				                 toggleArrows        : false,
 				                 resizeContents      : true
 				            });
@@ -112,19 +124,19 @@
 				                 animationTime       : yit_slider_cycle_speed,
 				                 easing              : yit_slider_cycle_fx,
 				                 autoPlay            : yit_slider_cycle_autoplay ? true : false,
-				                 pauseOnHover        : true, 
+				                 pauseOnHover        : true,
 				                 toggleArrows        : yit_slider_cycle_directionNavHide ? true : false,
 				                 onSlideComplete     : function(slider){},
 				                 resizeContents      : true,
 				                 onSlideBegin        : function(slider) {},
 				                 onSlideComplete     : function(slider) {}
 				            });
-				            
+
 				        }
 				    });
 				</script>
 				<div class="mobile-slider">
-				    <div class="slider fixed-image inner"><img src="images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
+				    <div class="slider fixed-image inner"><img src="{{asset(env('THEME'))}}/images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
 				</div>
-				
+
 @endif

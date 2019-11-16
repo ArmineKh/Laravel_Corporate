@@ -32,11 +32,9 @@ class SiteController extends Controller
     {
         $menu = $this->getMenu();
 
-
-
         $navigation = view('pink.navigation')->with('menu', $menu)->render();
         $this->vars['navigation'] = $navigation;
-		 return view($this->template)->with($this->vars);   
+		 return view($this->template)->with($this->vars);
     }
 
     protected function getMenu(){
@@ -54,7 +52,6 @@ class SiteController extends Controller
                 }
             }
         });
-        // dd($mBuilder);
 
         return $mBuilder;
     }

@@ -1,9 +1,13 @@
-@extends(env('THEME').'.layouts.site');
+@extends(env('THEME').'.layouts.site')
 
 @section('navigation')
 	 {!!$navigation ?? ''!!}
 @endsection
 
 @section('slider')
-	{!! $sliders !!}
+	{!!$sliders ?? ''!!}
+@endsection
+
+@section('content')
+    {!!$content!!}
 @endsection
